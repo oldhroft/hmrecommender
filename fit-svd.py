@@ -100,6 +100,6 @@ if __name__ == "__main__":
     
     logger.info('Saving vectors')
     np.savetxt(f'vectors_{suffix}.csv', X_svd, delimiter=',')
-    logger.info('Saving vectors')
+    logger.info('Saving model')
     joblib.dump(svd, f'model_{suffix}.pkl')
                
