@@ -96,7 +96,7 @@ if __name__ == "__main__":
     plt.savefig('pairplot.png')
     
     today = str(datetime.date.today())
-    suffix = 'n_components{}_{}.csv'.format(CFG['svd__n_components'], today)
+    suffix = 'n_components{}_{}'.format(CFG['svd__n_components'], today)
     
     logger.info('Saving vectors')
     np.savetxt(f'vectors_{suffix}.csv', X_svd, delimiter=',')
