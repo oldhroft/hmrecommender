@@ -17,10 +17,9 @@ CFG = {
         'product_code', 'product_type_no', 'graphical_appearance_no',
         'perceived_colour_value_id', 'index_code', 'section_no',
     ],
-    'svd__n_components': 150,
+    'svd__n_components': 50,
     'svd__random_state': 17,
     'output_file': 'articles_vectors'
-    
 }
 
 
@@ -99,7 +98,10 @@ if __name__ == "__main__":
     suffix = 'n_components{}_{}'.format(CFG['svd__n_components'], today)
     
     logger.info('Saving vectors')
-    np.savetxt(f'vectors_{suffix}.csv', X_svd, delimiter=',')
+    
+    vectors = pd.DataFrame(X_svd, index=articles.article_id)
+    vectors.to_csv(f'vectors_{suffix}.csv')
+
     logger.info('Saving model')
     joblib.dump(svd, f'model_{suffix}.pkl')
                
